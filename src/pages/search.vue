@@ -17,7 +17,7 @@
           <md-table-head class="only-large">部局</md-table-head>
           <md-table-head class="only-large">場所</md-table-head>
           <md-table-head class="only-large">単位数</md-table-head>
-          <md-table-head></md-table-head>
+          <md-table-head class="only-large"></md-table-head>
         </md-table-row>
       </md-table-header>
       <transition-group name="result" tag="md-table-body">
@@ -202,21 +202,30 @@ export default {
   .md-table /deep/ {
     table {
       table-layout: fixed;
+
       th, td {
         width: 10%;
         overflow: hidden;
         transition: width ease .5s;
+
         @media (max-width: 900px) {
           &.only-large {
             width: 0;
+            display: none;
           }
 
           &:not(.only-large) {
-            width: 15%;
+            width: 25%;
+
+            &.title-column {
+              width: 50%;
+            }
           }
 
-          &.title-column {
-            width: 40%;
+          .md-table-cell-container,
+          .md-table-head-container,
+          .md-table-head-text {
+            padding: 6px;
           }
         }
       }
